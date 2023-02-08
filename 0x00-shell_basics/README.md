@@ -1,1 +1,1 @@
-it prints the current working directory
+Each file performs comands it says
