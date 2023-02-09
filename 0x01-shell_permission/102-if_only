@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo find ./hello -user guillaume -exec chown betty
