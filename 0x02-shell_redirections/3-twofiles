@@ -1,0 +1,2 @@
+#!/bin/bash
+cat /etc/passwd > logs | cat /etc/hosts >> logs | cat logs
