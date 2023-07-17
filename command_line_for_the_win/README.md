@@ -15,6 +15,6 @@ then i entered my <password>
 then i navigated to < /root/alx-system_engineering-devops/command_line_for_the_win/ >
 
 then i used the command 
-<put> <first_file>
-<put> <second_file>
-<put> <third_file>
+put <first_file>
+put <second_file>
+put <third_file>
