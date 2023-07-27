@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# display username, user id, homedir path for usr using loop
+if [ -e "/etc/passwd" ]
+then
+	while IFS=: read -r username b userid d e homedir f
+	do
+		if [ "$username" ] || [ "$b" ] || [ "$d" ] || [ "$e" ] || [ "$f" ]
+		then
+			echo "$username:$userid:$homedir" 
+		fi
+	done < /etc/passwd
+fi
