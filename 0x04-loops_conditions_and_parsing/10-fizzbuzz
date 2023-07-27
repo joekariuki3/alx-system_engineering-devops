@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# FizzBuzz challenge
+for i in {1..100}
+do
+	div3=$((i % 3))
+	div5=$((i % 5))
+	if [ $div3 = 0 ] && [ $div5 = 0 ]
+	then
+		echo "FizzBuzz"
+	elif  [ $div3 = 0 ]
+	then
+		echo "Fizz"
+	elif [ $div5 = 0 ]
+	then
+		echo "Buzz"
+	else
+		echo $i
+	fi
+done
