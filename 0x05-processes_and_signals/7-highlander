@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# display a string with sleep 2 in a loop
+invisible(){
+	echo "I am invincible!!!"
+}
+trap invisible SIGTERM
+while true
+do
+	echo "To infinity and beyond"
+	sleep 2
+
+done
