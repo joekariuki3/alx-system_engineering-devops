@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-# using awk to perse apache log file
-awk '{print $1,$9}' apache-access.log
