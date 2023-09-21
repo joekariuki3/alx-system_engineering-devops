@@ -1,1 +1,4 @@
 *.txt
+sendgrid_traffic.pcap
+user_authenticating_into_server
+
