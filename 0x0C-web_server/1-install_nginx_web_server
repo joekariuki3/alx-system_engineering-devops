@@ -3,6 +3,5 @@
 
 sudo apt update
 sudo apt install nginx -y
-sudo mkdir -p /var/www/html/
 sudo chown -R "$USER":"$USER" /var/www
 echo "Hello World!" > /var/www/html/index.html
