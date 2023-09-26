@@ -6,4 +6,4 @@ sudo apt install nginx -y
 sudo chown -R "$USER":"$USER" /etc/nginxi
 nc -l -p 80
 sed -i "s#server_name _;#location /redirect_me {\n \t\treturn\t301 https://google.com;}#1" /etc/nginx/sites-available/default
-sudo systemctl restart nginx
+sudo service nginx start
