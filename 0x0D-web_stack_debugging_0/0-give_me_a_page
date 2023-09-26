@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# script to start up apache server
+apache2ctl start
