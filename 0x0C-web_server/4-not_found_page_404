@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# script to install nginx in a web server and configure a 404
+
+sudo apt update
+sudo apt install nginx -y
+sudo chown -R "$USER":"$USER" /usr/share/nginx/html
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/404.html
+sudo chown -R "$USER":"$USER" /etc/nginx
+sed -i "s#server_name _;#error_page 404 /404.html;\n\tlocation = /404.html {\n \t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}#1" /etc/nginx/sites-available/default
+sudo systemctl restart nginx
