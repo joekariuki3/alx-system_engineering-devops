@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # script to install nginx in a web server and configure a redirect
 
-sudo apt update -y
-sudo apt install nginx -y
-sudo chown -R "$USER":"$USER" /etc/nginxi
-nc -l -p 80
+sudo apt update
+sudo apt install -y nginx
+sudo chrow -R "$USER":"$USER" /var/www
+echo "Hello World!" > /var/www/html/index.html
+sudo chown -R "$USER":"$USER" /etc/nginx
 sed -i "s#server_name _;#location /redirect_me {\n \t\treturn\t301 https://google.com;}#1" /etc/nginx/sites-available/default
 sudo service nginx start
