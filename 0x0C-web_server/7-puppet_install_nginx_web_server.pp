@@ -1,6 +1,6 @@
 # manifest to install nginx, should perform redirect 301
 
-package {'nginx':
+package { 'nginx':
   ensure => installed,
 }
 
