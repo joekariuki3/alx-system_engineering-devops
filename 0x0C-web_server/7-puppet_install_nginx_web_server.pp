@@ -14,7 +14,7 @@ file { '/var/www/html/index.html':
 
 file_line { 'Set 301 redirection':
   ensure   => 'present',
-  before   => 'location / {',
+  after   => 'server_name\ _;',
   path     => '/etc/nginx/sites-available/default',
   multiple => true,
   line     => '\trewrite ^/redirect_me/ google.com permanent',
