@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-# script to configure nginx server so that its HTTP response contains a custom header
-sudo apt update
-sudo apt install -y  nginx
-sudo chown -R "$USER":"$USER" /etc/nginx
-sed -i "s#location / {#location / { \n\t\t add_header X-Served-By $HOSTNAME;\n#" /etc/nginx/sites-available/default
+# script to configure nginx server
+# so that its HTTP response contains a custom header
+sudo apt-get update -y
+sudo apt-get install -y  nginx
+sudo chown "$USER":"$USER" /etc/nginx/sites-available/default
+sudo sed -i "s#location / {#location / { \n\t\t add_header X-Served-By $HOSTNAME;\n#" /etc/nginx/sites-available/default
 sudo service nginx start
