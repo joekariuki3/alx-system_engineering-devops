@@ -19,6 +19,4 @@ sed -i "s#location / {#error_page 404 /404.html;\n\tlocation = /404.html {\n \t\
 sed -i "s#location / {#location /redirect_me {\n \t\treturn\t301 https://google.com;}\n\tlocation / {#" /etc/nginx/sites-available/default
 
 sudo sed -i "s#location / {#location / { \n\t\t add_header X-Served-By $HOSTNAME;\n#" /etc/nginx/sites-available/default
-
-sudo service nginx restart
-
+sudo nginx -s reload
