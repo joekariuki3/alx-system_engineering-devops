@@ -3,7 +3,7 @@
 
 sudo apt update
 sudo apt install -y nginx
-sudo chrow -R "$USER":"$USER" /var/www
+sudo chown -R "$USER":"$USER" /var/www
 echo "Hello World!" > /var/www/html/index.html
 sudo chown -R "$USER":"$USER" /etc/nginx
 sed -i "s#server_name _;#location /redirect_me {\n \t\treturn\t301 https://google.com;}#1" /etc/nginx/sites-available/default

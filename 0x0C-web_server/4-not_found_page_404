@@ -3,7 +3,7 @@
 
 sudo apt update
 sudo apt install nginx -y
-sudo chrow -R "$USER":"$USER" /var/www
+sudo chown -R "$USER":"$USER" /var/www
 echo "Hello World!" > /var/www/html/index.html
 sudo chown -R "$USER":"$USER" /usr/share/nginx/html
 echo "Ceci n'est pas une page" > /usr/share/nginx/html/404.html
