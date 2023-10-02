@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # script to configure server  so that its HTTP response contains a custom header
-sudo apt update -y
+sudo apt update
 
-sudo apt install nginx -y
+sudo apt install -y  nginx
 
 sudo chown -R "$USER":"$USER" /var/www
 
@@ -18,5 +18,5 @@ sed -i "s#location / {#error_page 404 /404.html;\n\tlocation = /404.html {\n \t\
 
 sed -i "s#location / {#location /redirect_me {\n \t\treturn\t301 https://google.com;}\n\tlocation / {#" /etc/nginx/sites-available/default
 
-sed -i "s#location / {#location / { \n\t\t add_header X-Served-By $hostname;\n#" /etc/nginx/sites-available/default
+sed -i "s#location / {#location / { \n\t\t add_header X-Served-By $HOSTNAME;\n#" /etc/nginx/sites-available/default
 sudo nginx -s reload
