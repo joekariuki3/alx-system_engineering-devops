@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # script to configure server  so that its HTTP response contains a custom header
 sudo chown "$USER":"$USER" /etc/nginx/sites-available/default
-string="\tlocation/ { \n\t\t add_header X-Served-By $hostname;\n}"
-sed s#location / {#$string# /etc/nginx/sites-available/default
+sed -i 's#location / {#location / { \n\t\t add_header X-Served-By $hostname;\n#' /etc/nginx/sites-available/default
 sudo nginx -s reload
