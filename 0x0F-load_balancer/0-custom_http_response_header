@@ -3,20 +3,7 @@
 # so that its HTTP response contains a custom header
 sudo apt-get update -y
 sudo apt-get install -y  nginx
-
-sudo chown -R "$USER":"$USER" /var/www
-
-echo "Hello World!" > /var/www/html/index.html
-
-sudo chown -R "$USER":"$USER" /usr/share/nginx/html
-
-echo "Ceci n'est pas une page" > /usr/share/nginx/html/404.html
-
-sudo chown -R "$USER":"$USER" /etc/nginx
-
-sed -i "s#location / {#error_page 404 /404.html;\n\tlocation = /404.html {\n \t\troot /usr/share/nginx/html;\n\t\tinternal;\n\t}\n\tlocation / {#" /etc/nginx/sites-available/default
-
-sed -i "s#location / {#location /redirect_me {\n \t\treturn\t301 https://google.com;}\n\tlocation / {#" /etc/nginx/sites-available/default
-
+sudo chown "$USER":"$USER" /etc/nginx/sites-available/default
 sudo sed -i "s#location / {#location / { \n\t\t add_header X-Served-By $HOSTNAME;\n#" /etc/nginx/sites-available/default
 sudo nginx -s reload
+sudo service nginx start
