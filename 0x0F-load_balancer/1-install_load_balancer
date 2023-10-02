@@ -6,5 +6,5 @@
 sudo apt-get update -y
 sudo apt-get install haproxy=2.0.\* -y
 sudo chown "$USER":"$USER" /etc/haproxy/haproxy.cfg
-sudo sed -i -e "$a#frontend http\n\t\tbind *:80\n\t\tmode http\n\t\tdefault_backend web-backend\nbackend web-backend\n\t\tbalance roundrobin\n\t\tserver 243838-web-01 54.90.5.38:80\n\t\tserver 243838-web-02 52.3.242.109:80" /etc/haproxy/haproxy.cfg
-sudo service haproxy start
+sudo sed -i  "$ a frontend http\n\t\tbind *:80\n\t\tmode http\n\t\tdefault_backend web-backend\nbackend web-backend\n\t\tbalance roundrobin\n\t\tserver 243838-web-01 54.90.5.38:80\n\t\tserver 243838-web-02 52.3.242.109:80" /etc/haproxy/haproxy.cfg
+sudo service haproxy restart
