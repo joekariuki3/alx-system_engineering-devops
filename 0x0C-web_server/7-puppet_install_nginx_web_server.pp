@@ -12,9 +12,15 @@ file { '/var/www/html/index.html':
   require => Package['nginx'],
 }
 
-exec { 'append_redirect_me':
-  command => "/usr/bin/sed -i '/i^}$/i \\\n\tlocation \\/redirect_me {return 301 google.com;}' /etc/nginx/sites-available/default",
-}
+file_line { 'Set 301 redirection':
+  ensure   => 'present',
+  before   => 'location / {',
+  path     => '/etc/nginx/sites-available/default',
+  multiple => true,
+  line     => '\trewrite ^/redirect_me/ google.com permanent',
+  notify   => Exec['restart nginx'],
+  require  => File['/var/www/html/index.html']
+  }
 
 service { 'nginx':
   ensure  => 'running',
