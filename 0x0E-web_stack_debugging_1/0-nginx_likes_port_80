@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# scrip to make sure nginx is running 
+sudo apt update -y
+sudo apt install nginx -y
+sudo service nginx start
