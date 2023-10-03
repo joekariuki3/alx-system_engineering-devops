@@ -8,7 +8,7 @@ package { 'nginx':
 }
 
 file { '/var/www/html/index.html':
-  ensure  => 'file',
+  ensure  => 'present',
   content => 'Hello World!',
   mode    => '0644',
   require => Package['nginx'],
