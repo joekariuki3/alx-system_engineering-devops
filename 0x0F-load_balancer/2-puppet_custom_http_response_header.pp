@@ -17,7 +17,7 @@ file_line { 'Set 301 redirection':
   ensure   => 'present',
   path     => '/etc/nginx/sites-available/default',
   multiple => true,
-  line     => "\trewrite ^/redirect_me/$ google.com permanent;",
+  line     => "\trewrite ^/redirect_me https://google.com permanent;",
   after    => 'root /var/www/html;',
   notify   => Exec['restart'],
   require  => File['/var/www/html/index.html'],
@@ -25,8 +25,6 @@ file_line { 'Set 301 redirection':
 
 file { '/etc/nginx/sites-available/default':
   ensure => 'present',
-  owner  => "${username",
-  group  => "${username}",
   mode   => '0644',
 }
 
