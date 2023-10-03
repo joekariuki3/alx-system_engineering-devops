@@ -4,7 +4,7 @@
 # to use round robin to serve traffic to two serves
 
 sudo apt-get update -y
-sudo apt-get install haproxy=2.0.\* -y
+sudo apt-get install haproxy -y
 sudo chown "$USER":"$USER" /etc/haproxy/haproxy.cfg
 sudo sed -i  "$ a frontend http\n\t\tbind *:80\n\t\tmode http\n\t\tdefault_backend web-backend\nbackend web-backend\n\t\tbalance roundrobin\n\t\tserver web-01 54.90.5.38:80\n\t\tserver web-02 52.3.242.109:80" /etc/haproxy/haproxy.cfg
 sudo service haproxy restart
