@@ -1,40 +1,18 @@
-# manifest to install nginx, should perform redirect 301
+# manifest to install nginx, set a custom header
 
 package { 'nginx':
   ensure => 'installed',
 }
 
-
-file { '/var/www/html/index.html':
-  ensure  => 'file',
-  content => 'Hello World!',
-  mode    => '0644',
+augeas { 'nginx_add_custom_header':
+  context => '/etc/nginx/sites-available/default',
+  changes => ['set add_header[last()+1] X-Served-By $hostname'],
   require => Package['nginx'],
+  notify  => Service['nginx'],
 }
 
-file_line { 'Set 301 redirection':
-  ensure   => 'present',
-  after    => 'server_name\ _;',
-  path     => '/etc/nginx/sites-available/default',
-  multiple => true,
-  line     => '\trewrite ^/redirect_me/ google.com permanent',
-  notify   => Exec['restart nginx'],
-  require  => File['/var/www/html/index.html']
-  }
-
 service { 'nginx':
-  ensure  => 'running',
+  ensure  => running,
   enable  => true,
   require => Package['nginx'],
 }
-
-file_line { 'Set X-Served-By header':
-  ensure   => 'present',
-  after    => 'location / {',
-  path     => '/etc/nginx/sites-available/default',
-  multiple => true,
-  line     => 'add_header X-Served-By \$hostname;'
-  notify   => Exec['restart nginx'],
-  require  => File['/var/www/html/index.html']
-}
-
