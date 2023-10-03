@@ -2,7 +2,6 @@
 exec { 'update':
   command => '/usr/bin/apt update',
 }
-
 package { 'nginx':
   ensure => 'installed',
 }
@@ -25,7 +24,9 @@ file_line { 'Set 301 redirection':
 }
 
 file { '/etc/nginx/sites-available/default':
-  ensure => 'file',
+  ensure => 'present',
+  owner  => "${username",
+  group  => "${username}",
   mode   => '0644',
 }
 
