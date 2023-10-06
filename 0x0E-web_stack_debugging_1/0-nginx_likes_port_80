@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# scrip to make sure nginx is running 
-sudo apt update -y
-sudo apt install nginx -y
-sudo service nginx start
+# scrip to make sure nginx is running on port 80
+sudo ln -s -f /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
