@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # scrip to make sure nginx is running on port 80 short fix
 sudo ln -s -f /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-sudo nginx -s quit
+pkill -1 nginx
