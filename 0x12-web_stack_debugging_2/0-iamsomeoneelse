@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # runcommand as another user
 user="$1"
-runuser "$user" -c "whoami"
+sudo -u "$user" whoami
