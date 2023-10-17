@@ -2,5 +2,4 @@
 # run nginx as user nginx
 chmod 764 /etc/nginx/nginx.conf
 sed -i "s#pid /run/nginx.pid;#pid /run/nginx.pid;\nuser nginx nginx;\n#1" /etc/nginx/nginx.conf
-service nginx stop
-sudo -u nginx  service nginx start
+sudo -u nginx  service nginx restart
