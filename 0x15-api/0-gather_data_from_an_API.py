@@ -18,15 +18,16 @@ if __name__ == '__main__':
             url = 'https://jsonplaceholder.typicode.com/todos/'
             response = requests.get(url)
             all_to_do = response.json()
-            ad_len = len(all_to_do)
-            finished_to_do = 0
+            not_done = 0
             done_to_do = []
             for to_do in all_to_do:
                 if user_id == to_do.get('userId'):
-                    if to_do.get('completed'):
-                        finished_to_do += 1
+                    if not to_do.get('completed'):
+                        not_done += 1
+                    else:
                         done_to_do.append(to_do.get('title'))
             d_len = len(done_to_do)
-            print(f'Employee {user} is done with tasks({d_len}/{ad_len}):')
+            total = d_len + not_done
+            print(f"Employee {user} is done with tasks({d_len}/{total}):")
             for to_do in done_to_do:
                 print(f"\t {to_do}")
