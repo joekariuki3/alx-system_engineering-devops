@@ -24,12 +24,14 @@ if __name__ == '__main__':
             all_data = []
             for to_do in all_to_do:
                 if user_id == to_do.get('userId'):
-                    row.append(user_id)
+                    row.append(str(user_id))
                     row.append(user)
-                    row.append(to_do.get('completed'))
-                    row.append(to_do.get('title'))
+                    status = to_do.get('completed')
+                    row.append(str(status))
+                    task = to_do.get('title')
+                    row.append(task)
                     all_data.append(row)
                     row = []
-            with open(f'{user_id}.csv', 'w', encoding='UTF8') as csvfile:
-                writter = csv.writer(csvfile)
+            with open(f'{user_id}.csv', 'w', encoding='utf-8') as csvfile:
+                writter = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
                 writter.writerows(all_data)
