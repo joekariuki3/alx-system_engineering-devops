@@ -15,7 +15,7 @@ if __name__ == '__main__':
             url_user = f'https://jsonplaceholder.typicode.com/users/{user_id}'
             response_user = requests.get(url_user)
             user_data = response_user.json()
-            user = user_data.get('name')
+            user = user_data.get('username')
             url = 'https://jsonplaceholder.typicode.com/todos/'
             response = requests.get(url)
             all_to_do = response.json()
@@ -30,6 +30,6 @@ if __name__ == '__main__':
                     row.append(to_do.get('title'))
                     all_data.append(row)
                     row = []
-            with open(f'{user_id}.csv', 'w') as csvfile:
+            with open(f'{user_id}.csv', 'w', encoding='UTF8') as csvfile:
                 writter = csv.writer(csvfile)
                 writter.writerows(all_data)
