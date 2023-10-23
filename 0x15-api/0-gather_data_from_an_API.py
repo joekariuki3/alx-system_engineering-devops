@@ -4,8 +4,8 @@ Script to that takes an integer sa an
 id and gets data from a API
 """
 
-import sys
 import requests
+import sys
 
 
 if len(sys.argv) > 1:
@@ -28,6 +28,6 @@ if len(sys.argv) > 1:
                     finished_to_do += 1
                     done_to_do.append(to_do.get('title'))
         d_len = len(done_to_do)
-        print(f'Employee {user_name} is done with tasks({d_len}/{ad_length}:')
+        print(f'Employee {user_name} is done with tasks({d_len}/{ad_length}):')
         for to_do in done_to_do:
             print(f"\t{to_do}")
