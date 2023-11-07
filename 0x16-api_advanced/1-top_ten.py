@@ -12,9 +12,11 @@ def top_ten(subreddit):
     if resp.status_code == 200:
         alldata = resp.json()
         alldata = alldata['data']['children']
-        for data in alldata:
+        for index, data in enumerate(alldata):
             post = data['data']
             title = post['title']
             print(title)
+            if index == 9:
+                break
     else:
         print(None)
