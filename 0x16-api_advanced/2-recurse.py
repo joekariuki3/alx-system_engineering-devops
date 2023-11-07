@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/python3
 """function to return a list of all titles of a subreddit"""
 
 import requests
