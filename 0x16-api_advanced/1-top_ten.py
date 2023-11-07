@@ -5,10 +5,11 @@ import requests
 
 
 def top_ten(subreddit):
-    """return 10 tiles of subreddit"""
+    """print the first 10 tiles of subreddit
+    and if no subredit print none"""
     url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     headers = {'User-Agent': 'Mozilla/5.0'}
-    resp = requests.get(url, headers)
+    resp = requests.get(url, headers, allow_redirects=False)
     if resp.status_code == 200:
         alldata = resp.json()
         alldata = alldata['data']['children']
