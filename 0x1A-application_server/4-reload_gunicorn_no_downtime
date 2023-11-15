@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # script to gracefuly reload gunicorn instance running hbnb
-mainPID=$(ps aux | grep gunicorn | grep 5003 | grep Ss | awk '{print $2}')
+mainPID=$(pgrep -f "gunicorn.*:5003" | head -n 1 | awk "{print $1}")
 kill -HUP "$mainPID"
