@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # script to gracefuly reload gunicorn instance running hbnb
-mainPID=$(sudo systemctl status hbnb | grep 'Main PID' | awk '{ print $3}')
+mainPID=$(sudo systemctl status gunicorn | grep 'Main PID' | awk '{ print $3}')
 kill -HUP "$mainPID"
